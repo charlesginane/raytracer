@@ -13,9 +13,15 @@ set(MISC_DIR lib/misc/)
 set(LIB_MISC
     ${MISC_DIR}vector3.cc)
 
+set(PARSER_SRC
+    ${PARSER_DIR}camera.cc)
+
 set(MAIN_SRC
     ${SRC_DIR}/main.cc)
 
 add_library(lib STATIC ${LIB_MISC})
+
+add_library(parser STATIC ${PARSER_SRC})
+target_link_libraries(lib)
 
 add_executable(raytracer ${MAIN_SRC})
