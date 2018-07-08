@@ -15,7 +15,8 @@ set(LIB_MISC
 
 set(PARSER_SRC
     ${PARSER_DIR}camera.cc
-    ${PARSER_DIR}ambient-light.cc)
+    ${PARSER_DIR}ambient-light.cc
+    ${PARSER_DIR}direction-light.cc)
 
 set(MAIN_SRC
     ${SRC_DIR}/main.cc)

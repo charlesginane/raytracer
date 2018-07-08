@@ -1,19 +1,22 @@
 #pragma once
 
+#include "vector3.hh"
+
 namespace light
 {
-  class AmbienLight
+  class AmbientLight
   {
     public:
+      using vec = vector::Vector3;
       /* Constructor */
-      AmbienLight(float r, float g, float b);
+      AmbientLight(float r, float g, float b);
 
       /* Getters */
       float r_get() const;
       float g_get() const;
       float b_get() const;
 
-    private:
+    protected:
       /* Attributes */
       float r_;
       float g_;
