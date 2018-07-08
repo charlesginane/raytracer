@@ -14,7 +14,8 @@ set(LIB_MISC
     ${MISC_DIR}vector3.cc)
 
 set(PARSER_SRC
-    ${PARSER_DIR}camera.cc)
+    ${PARSER_DIR}camera.cc
+    ${PARSER_DIR}ambient-light.cc)
 
 set(MAIN_SRC
     ${SRC_DIR}/main.cc)
