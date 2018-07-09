@@ -11,7 +11,8 @@ set(SRC_DIR src/)
 set(MISC_DIR lib/misc/)
 
 set(LIB_MISC
-    ${MISC_DIR}vector3.cc)
+    ${MISC_DIR}vector3.cc
+    ${MISC_DIR}color.cc)
 
 set(PARSER_SRC
     ${PARSER_DIR}camera.cc
