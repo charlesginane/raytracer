@@ -19,7 +19,9 @@ set(PARSER_SRC
     ${PARSER_DIR}ambient-light.cc
     ${PARSER_DIR}direction-light.cc
     ${PARSER_DIR}point-light.cc
-    ${PARSER_DIR}object.cc)
+    ${PARSER_DIR}object.cc
+    ${PARSER_DIR}vertice.cc
+    ${PARSER_DIR}parser.cc)
 
 set(MAIN_SRC
     ${SRC_DIR}/main.cc)

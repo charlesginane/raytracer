@@ -48,4 +48,17 @@ namespace vector
   {
     return Vector3(x_ * coeff, y_ * coeff, z_ * coeff);
   }
+
+  float
+  Vector3::dot_product(const Vector3 other) const
+  {
+    return x_ * other.x_ + y_ * other.y_ + z_ * other.z_;
+  }
+
+  Vector3
+  Vector3::cross_product(const Vector3 other) const
+  {
+    return Vector3(y_ * other.z_ - z_ * other.y_, z_ * other.x_ - x_ * other.z_
+                   , x_ * other.y_ - y_ * other.x_);
+  }
 }

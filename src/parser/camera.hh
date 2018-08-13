@@ -8,6 +8,7 @@ class Camera
     using vec = vector::Vector3;
 
     /* Constructor */
+    Camera();
     Camera(int width, int height, vec pos, vec u, vec v, float fov);
 
     /* getters */

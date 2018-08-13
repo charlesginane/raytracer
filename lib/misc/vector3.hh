@@ -23,6 +23,9 @@ class Vector3
 
       Vector3 operator*(const float coeff) const;
 
+      float dot_product(const Vector3 other) const;
+
+      Vector3 cross_product(const Vector3 other) const;
     private:
       /* Atributes */
       float x_;
