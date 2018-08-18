@@ -52,6 +52,12 @@ Object::d_get() const
   return d_;
 }
 
+std::vector<Vertice>
+Object::list_vertices_get() const
+{
+  return list_vertices_;
+}
+
 void
 Object::ka_set(RGB ka)
 {
@@ -92,4 +98,10 @@ void
 Object::d_set(float d)
 {
   d_ = d;
+}
+
+void
+Object::add_vertice(const Vertice ver)
+{
+    list_vertices_.push_back(ver);
 }

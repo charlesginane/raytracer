@@ -1,5 +1,8 @@
 #include "camera.hh"
 
+Camera::Camera()
+{}
+
 Camera::Camera(int width, int height, vec pos, vec u, vec v, float fov) :
                 width_(width), height_(height), pos_(pos),
                 u_(u), v_(v), fov_(fov)

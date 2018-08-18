@@ -1,6 +1,9 @@
 #pragma once
 
+#include <vector>
+
 #include "color.hh"
+#include "vertice.hh"
 
 class Object
 {
@@ -17,6 +20,7 @@ class Object
     float ni_get() const;
     float nr_get() const;
     float d_get() const;
+    std::vector<Vertice> list_vertices_get() const;
 
     /* Setter */
     void ka_set(RGB ka);
@@ -27,6 +31,9 @@ class Object
     void nr_set(float nr);
     void d_set(float d);
     
+    /* Methods */
+    void add_vertice(const Vertice ver);    
+
   private:
     int n_;
     RGB ka_;
@@ -36,4 +43,5 @@ class Object
     float ni_;
     float nr_;
     float d_;
+    std::vector<Vertice> list_vertices_;
 };

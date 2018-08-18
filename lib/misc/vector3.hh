@@ -8,6 +8,8 @@ class Vector3
       /* Constructor */
       Vector3(float x, float y, float z);
 
+      Vector3();
+
       /* getters */
       float x_get() const;
       float y_get() const;
