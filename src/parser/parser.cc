@@ -51,11 +51,19 @@ Parser::parse()
             while (line.size() == 0)
             {
                 if (std::getline(file_in, line))
+                    break;
                    // FIXME: end of file | object
             }
             list_word = sentence_to_list(line);
-            while (list_word.at(0) != "v" && list_word.at(0) != "vn")
+            while (list_word.size() != 0 || list_word.at(0) != "object")
             {
+                if (list_word.size() == 0)
+                {
+                    if (!(std::getline(file_in, line)))
+                        break;
+                    list_word = sentence_to_list(line);
+                    continue;
+                }
                 if (list_word.at(0) == "Ka")
                 {
                     auto rgb = RGB(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3)));
@@ -77,12 +85,40 @@ Parser::parse()
                     obj.ni_set(std::stof(list_word.at(1)));
                 else if (list_word.at(0) == "Nr")
                     obj.nr_set(std::stof(list_word.at(1)));
+                else if (list_word.at(0) == "v")
+                {
+                    auto vertex = Vertice(vec(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3))), false);
+                    obj.add_vertice(vertex);
+                }
+                else if (list_word.at(0) == "vn")
+                {
+                    auto vertex = Vertice(vec(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3))), true);
+                    obj.add_vertice(vertex);
+                }
+                if (!(std::getline(file_in, line)))
+                {
+                    objects_.push_back(obj);
+                    break;
+                }
+                if (line.size() == 0)
+                    continue;
+                list_word = sentence_to_list(line);
             }
         }
     }
-
     file_in.close();
-    return false;
+    return true;
+}
+
+void
+Parser::print() const
+{
+    camera_.print();
+    for (auto light : lights_)
+        light.print();
+
+    for (auto object : objects_)
+        object.print();
 }
 
 Camera
@@ -102,4 +138,3 @@ Parser::objects_get() const
 {
     return objects_;
 }
-

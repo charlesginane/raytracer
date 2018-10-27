@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include "vector3.hh"
 
 class Camera
@@ -10,6 +12,9 @@ class Camera
     /* Constructor */
     Camera();
     Camera(int width, int height, vec pos, vec u, vec v, float fov);
+
+    /* Methods */
+    void print() const;
 
     /* getters */
     int width_get() const;

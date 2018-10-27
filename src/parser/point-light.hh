@@ -13,6 +13,9 @@ namespace light
 
       vec pos_get() const;
 
+      /* Methods */
+      void print() const override;
+
     private:
       vec pos_;
   };

@@ -2,7 +2,9 @@
 
 Object::Object(int n) : n_(n),  ka_(RGB(0,0,0)), kd_(RGB(0,0,0)), ks_(RGB(0,0,0))
                         , ns_(0), ni_(1), nr_(0), d_(1)
-{}
+{
+    list_vertices_ = std::vector<Vertice>();
+}
 
 int
 Object::n_get() const
@@ -104,4 +106,24 @@ void
 Object::add_vertice(const Vertice ver)
 {
     list_vertices_.push_back(ver);
+}
+
+void
+Object::print() const
+{
+    std::cout << "object " << n_ << std::endl << "Ka ";
+    ka_.print();
+    std::cout << std::endl << "Kd ";
+    kd_.print();
+    std::cout << std::endl << "Ks ";
+    ks_.print();
+    std::cout << std::endl;
+    std::cout << "Ns " << ns_ << std::endl;
+    std::cout << "Ni " << ni_ << std::endl;
+    std::cout << "Nr " << nr_ << std::endl;
+    std::cout << "d "  << d_ << std::endl;
+    std::cout << std::endl;
+    for (auto v : list_vertices_)
+        v.print();
+    std::cout << std::endl;
 }

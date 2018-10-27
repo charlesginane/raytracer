@@ -14,5 +14,6 @@ int main(int argc, char **argv)
     Parser parser = Parser(argv[1]);
     if (parser.parse() == false)
         return 2;
+    parser.print();
     return 0;
 }

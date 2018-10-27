@@ -13,6 +13,9 @@ class Vertice
     vec coord_get() const;
     bool is_n_get() const;
 
+    /* Methods */
+    void print() const;
+
   private:
     /* attributes */
     vec coord_;

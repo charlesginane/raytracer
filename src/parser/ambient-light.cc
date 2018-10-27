@@ -22,4 +22,10 @@ namespace light
   {
     return g_;
   }
+
+  void
+  AmbientLight::print() const
+  {
+    std::cout << "ambient_light " << r_ << " " << g_ << " " << b_ << std::endl;
+  }
 }

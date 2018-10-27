@@ -43,3 +43,15 @@ Camera::fov_get() const
 {
   return fov_;
 }
+
+void
+Camera::print() const
+{
+    std::cout << "camera " << width_ << " " << height_ << " ";
+    pos_.print();
+    std::cout << " ";
+    u_.print();
+    std::cout << " ";
+    v_.print();
+    std::cout << " " << fov_ << std::endl;
+}

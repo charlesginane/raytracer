@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 namespace vector
 {
 class Vector3
@@ -9,6 +11,9 @@ class Vector3
       Vector3(float x, float y, float z);
 
       Vector3();
+
+      /* Methods */
+      void print() const;
 
       /* getters */
       float x_get() const;

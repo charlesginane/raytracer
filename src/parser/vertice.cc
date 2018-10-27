@@ -14,3 +14,14 @@ Vertice::is_n_get() const
 {
   return is_n_;
 }
+
+void
+Vertice::print() const
+{
+    std::cout << "v";
+    if (is_n_)
+        std::cout << "n";
+    std::cout << " ";
+    coord_.print();
+    std::cout << std::endl;
+}

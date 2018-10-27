@@ -25,6 +25,7 @@ class Parser
 
         /* Methods */
         bool parse();
+        void print() const;
 
         /* Getter */
         Camera camera_get() const;
@@ -35,5 +36,5 @@ class Parser
         std::string file_in_;
         Camera camera_;
         std::vector<light::AmbientLight> lights_;
-        std::vector<Object> objects_;        
+        std::vector<Object> objects_;
 };

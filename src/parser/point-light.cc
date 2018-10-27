@@ -11,4 +11,12 @@ namespace light
   {
     return pos_;
   }
+
+  void
+  PointLight::print() const
+  {
+      std::cout << "point_light " << r_ << " " << g_ << " " << b_ << " ";
+      pos_.print();
+      std::cout << std::endl;
+  }
 }

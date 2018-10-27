@@ -30,9 +30,11 @@ class Object
     void ni_set(float ni);
     void nr_set(float nr);
     void d_set(float d);
-    
+
     /* Methods */
-    void add_vertice(const Vertice ver);    
+    void add_vertice(const Vertice ver);
+
+    void print() const;
 
   private:
     int n_;

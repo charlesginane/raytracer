@@ -3,6 +3,12 @@
 RGB::RGB(float r, float g, float b) : r_(r), g_(g), b_(b)
 {}
 
+void
+RGB::print() const
+{
+    std::cout << r_ << " " << g_ << " " << b_;
+}
+
 float
 RGB::r_get() const
 {

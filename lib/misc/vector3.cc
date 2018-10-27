@@ -64,4 +64,10 @@ namespace vector
     return Vector3(y_ * other.z_ - z_ * other.y_, z_ * other.x_ - x_ * other.z_
                    , x_ * other.y_ - y_ * other.x_);
   }
+
+  void
+  Vector3::print() const
+  {
+      std::cout << x_ << " " << y_ << " " << z_;
+  }
 }
