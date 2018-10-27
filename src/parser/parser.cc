@@ -45,9 +45,43 @@ Parser::parse()
         }
         else if (list_word.at(0) == "object")
         {
-            //FIXME: object
+            auto obj = Object(std::stoi(list_word.at(1)));
+            if (!std::getline(file_in, line))
+                break;
+            while (line.size() == 0)
+            {
+                if (std::getline(file_in, line))
+                   // FIXME: end of file | object
+            }
+            list_word = sentence_to_list(line);
+            while (list_word.at(0) != "v" && list_word.at(0) != "vn")
+            {
+                if (list_word.at(0) == "Ka")
+                {
+                    auto rgb = RGB(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3)));
+                    obj.ka_set(rgb);
+                }
+                else if(list_word.at(0) == "Kd")
+                {
+                    auto rgb = RGB(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3)));
+                    obj.kd_set(rgb);
+                }
+                else if(list_word.at(0) == "Ks")
+                {
+                    auto rgb = RGB(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3)));
+                    obj.ks_set(rgb);
+                }
+                else if (list_word.at(0) == "Ns")
+                    obj.ns_set(std::stof(list_word.at(1)));
+                else if (list_word.at(0) == "Ni")
+                    obj.ni_set(std::stof(list_word.at(1)));
+                else if (list_word.at(0) == "Nr")
+                    obj.nr_set(std::stof(list_word.at(1)));
+            }
         }
     }
+
+    file_in.close();
     return false;
 }
 
