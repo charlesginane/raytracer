@@ -4,11 +4,12 @@ project(raytracer)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -o3 -g")
 
-include_directories(src/parser lib/misc)
+include_directories(src/parser lib/misc src/trace)
 
 set(PARSER_DIR src/parser/)
 set(SRC_DIR src/)
 set(MISC_DIR lib/misc/)
+set(TRACE_DIR src/trace/)
 
 set(LIB_MISC
     ${MISC_DIR}vector3.cc
@@ -24,6 +25,10 @@ set(PARSER_SRC
     ${PARSER_DIR}vertice.cc
     ${PARSER_DIR}parser.cc)
 
+set(TRACE_SRC
+    ${TRACE_DIR}ray.cc
+    ${TRACE_DIR}outgoing_screen.cc)
+
 set(MAIN_SRC
     ${SRC_DIR}/main.cc)
 
@@ -34,6 +39,10 @@ add_library(parser STATIC ${PARSER_SRC})
 target_link_libraries(parser
                       lib)
 
+add_library(trace STATIC ${TRACE_SRC})
+target_link_libraries(lib)
+
 add_executable(raytracer ${MAIN_SRC})
 target_link_libraries(raytracer
-                      parser)
+                      parser
+                      trace)

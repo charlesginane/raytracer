@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include <iostream>
 
 namespace vector
@@ -30,9 +31,15 @@ class Vector3
 
       Vector3 operator*(const float coeff) const;
 
+      Vector3 operator*(const double coeff) const;
+
       float dot_product(const Vector3 other) const;
 
       Vector3 cross_product(const Vector3 other) const;
+
+      Vector3 normalize() const;
+
+      Vector3 compute(const Vector3 other) const;
     private:
       /* Atributes */
       float x_;
