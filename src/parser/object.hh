@@ -1,13 +1,17 @@
 #pragma once
 
+#include <tuple>
 #include <vector>
 
 #include "color.hh"
+#include "vector3.hh"
 #include "vertice.hh"
 
 class Object
 {
   public:
+     using vec = vector::Vector3;
+
     /* Constructor */
     Object(int n);
 
@@ -32,8 +36,8 @@ class Object
     void d_set(float d);
 
     /* Methods */
-    void add_vertice(const Vertice ver);
-
+    void add_vertice(const Vertice ver, bool is_n);
+    std::tuple<vec, vec> point_get(int pos) const;
     void print() const;
 
   private:
@@ -46,4 +50,5 @@ class Object
     float nr_;
     float d_;
     std::vector<Vertice> list_vertices_;
+    std::vector<Vertice> list_vertices_normal_;
 };

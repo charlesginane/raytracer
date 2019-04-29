@@ -4,12 +4,13 @@ project(raytracer)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -o3 -g")
 
-include_directories(src/parser lib/misc src/trace)
+include_directories(src/parser lib/misc src/trace src/output)
 
 set(PARSER_DIR src/parser/)
 set(SRC_DIR src/)
 set(MISC_DIR lib/misc/)
 set(TRACE_DIR src/trace/)
+set(PPM_DIR src/output/)
 
 set(LIB_MISC
     ${MISC_DIR}vector3.cc
@@ -18,6 +19,7 @@ set(LIB_MISC
 
 set(PARSER_SRC
     ${PARSER_DIR}camera.cc
+    ${PARSER_DIR}light.cc
     ${PARSER_DIR}ambient-light.cc
     ${PARSER_DIR}direction-light.cc
     ${PARSER_DIR}point-light.cc
@@ -27,7 +29,13 @@ set(PARSER_SRC
 
 set(TRACE_SRC
     ${TRACE_DIR}ray.cc
-    ${TRACE_DIR}outgoing_screen.cc)
+    ${TRACE_DIR}outgoing_screen.cc
+    ${TRACE_DIR}triangle.cc
+    ${TRACE_DIR}intersection.cc
+    ${TRACE_DIR}obj_tracing.cc)
+
+set(PPM_SRC
+    ${PPM_DIR}ppm.cc)
 
 set(MAIN_SRC
     ${SRC_DIR}/main.cc)
@@ -42,7 +50,11 @@ target_link_libraries(parser
 add_library(trace STATIC ${TRACE_SRC})
 target_link_libraries(lib)
 
+add_library(ppm STATIC ${PPM_SRC})
+target_link_libraries(lib)
+
 add_executable(raytracer ${MAIN_SRC})
 target_link_libraries(raytracer
                       parser
-                      trace)
+                      trace
+                      ppm)

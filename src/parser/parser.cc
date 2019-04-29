@@ -28,19 +28,19 @@ Parser::parse()
         }
         else if (list_word.at(0) == "a_light")
         {
-            auto light = light::AmbientLight(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3)));
+            auto light = new light::AmbientLight(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3)));
             lights_.push_back(light);
         }
         else if (list_word.at(0) == "d_light")
         {
             auto dir = vec(std::stof(list_word.at(4)), std::stof(list_word.at(5)), std::stof(list_word.at(6)));
-            auto light = light::DirectionLight(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3)), dir);
+            auto light = new light::DirectionLight(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3)), dir);
             lights_.push_back(light);
         }
         else if (list_word.at(0) == "p_light")
         {
             auto pos = vec(std::stof(list_word.at(4)), std::stof(list_word.at(5)), std::stof(list_word.at(6)));
-            auto light = light::PointLight(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3)), pos);
+            auto light = new light::PointLight(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3)), pos);
             lights_.push_back(light);
         }
         else if (list_word.at(0) == "object")
@@ -87,13 +87,13 @@ Parser::parse()
                     obj.nr_set(std::stof(list_word.at(1)));
                 else if (list_word.at(0) == "v")
                 {
-                    auto vertex = Vertice(vec(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3))), false);
-                    obj.add_vertice(vertex);
+                    auto vertex = Vertice(vec(std::stof(list_word.at(1)) , std::stof(list_word.at(2)), std::stof(list_word.at(3))), false);
+                    obj.add_vertice(vertex, false);
                 }
                 else if (list_word.at(0) == "vn")
                 {
                     auto vertex = Vertice(vec(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3))), true);
-                    obj.add_vertice(vertex);
+                    obj.add_vertice(vertex, true);
                 }
                 if (!(std::getline(file_in, line)))
                 {
@@ -114,9 +114,8 @@ void
 Parser::print() const
 {
     camera_.print();
-    for (auto light : lights_)
-        light.print();
-
+    for (unsigned int i = 0; i < lights_.size(); ++i)
+        lights_.at(i)->print();
     for (auto object : objects_)
         object.print();
 }
@@ -127,7 +126,7 @@ Parser::camera_get() const
     return camera_;
 }
 
-std::vector<light::AmbientLight>
+std::vector<light::Light*>
 Parser::lights_get() const
 {
     return lights_;

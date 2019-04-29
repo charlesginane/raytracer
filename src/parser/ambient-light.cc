@@ -2,30 +2,24 @@
 
 namespace light
 {
-  AmbientLight::AmbientLight(float r, float g, float b) : r_(r), g_(g), b_(b)
+  AmbientLight::AmbientLight(float r, float g, float b) : Light(r,g,b)
   {}
 
-  float
-  AmbientLight::r_get() const
-  {
-    return r_;
-  }
-
-  float
-  AmbientLight::g_get() const
-  {
-    return b_;
-  }
-
-  float
-  AmbientLight::b_get() const
-  {
-    return g_;
+  RGB
+  AmbientLight::color_get() const {
+      return color_;
   }
 
   void
   AmbientLight::print() const
   {
-    std::cout << "ambient_light " << r_ << " " << g_ << " " << b_ << std::endl;
+    std::cout << "ambient_light ";
+    color_.print();
+    std::cout << std::endl;
+  }
+
+  std::string
+  AmbientLight::type_get(){
+      return "ambient";
   }
 }

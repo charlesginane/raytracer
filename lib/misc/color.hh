@@ -15,6 +15,14 @@ class RGB
     float r_get() const;
     float g_get() const;
     float b_get() const;
+
+    /* operators */
+    bool operator==(const RGB other) const;
+
+    bool operator!=(const RGB other) const;
+
+    RGB operator*(const RGB other) const;
+
   private:
     /* attributes */
     float r_;

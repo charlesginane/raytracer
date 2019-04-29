@@ -11,6 +11,7 @@
 #include "direction-light.hh"
 #include "object.hh"
 #include "parser.hh"
+#include "light.hh"
 #include "point-light.hh"
 #include "list-to-word.hh"
 #include "vector3.hh"
@@ -29,12 +30,12 @@ class Parser
 
         /* Getter */
         Camera camera_get() const;
-        std::vector<light::AmbientLight> lights_get() const;
+        std::vector<light::Light*> lights_get() const;
         std::vector<Object> objects_get() const;
 
     private:
         std::string file_in_;
         Camera camera_;
-        std::vector<light::AmbientLight> lights_;
+        std::vector<light::Light*> lights_;
         std::vector<Object> objects_;
 };

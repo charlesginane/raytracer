@@ -43,7 +43,7 @@ namespace vector
   Vector3
   Vector3::operator-(const Vector3 other) const
   {
-    return Vector3(x_ - other.x_, y_ - other.y_, z_ + other.z_);
+    return Vector3(x_ - other.x_, y_ - other.y_, z_ - other.z_);
   }
 
   Vector3

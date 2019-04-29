@@ -4,6 +4,7 @@ Object::Object(int n) : n_(n),  ka_(RGB(0,0,0)), kd_(RGB(0,0,0)), ks_(RGB(0,0,0)
                         , ns_(0), ni_(1), nr_(0), d_(1)
 {
     list_vertices_ = std::vector<Vertice>();
+    list_vertices_normal_ = std::vector<Vertice>();
 }
 
 int
@@ -103,9 +104,18 @@ Object::d_set(float d)
 }
 
 void
-Object::add_vertice(const Vertice ver)
+Object::add_vertice(const Vertice ver, bool is_n)
 {
-    list_vertices_.push_back(ver);
+    if (!is_n)
+        list_vertices_.push_back(ver);
+    else
+        list_vertices_normal_.push_back(ver);
+}
+
+std::tuple<Object::vec,Object::vec>
+Object::point_get(int pos) const
+{
+    return std::tuple<Object::vec,Object::vec>(list_vertices_.at(pos).coord_get(), list_vertices_normal_.at(pos).coord_get());
 }
 
 void

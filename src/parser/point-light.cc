@@ -3,7 +3,7 @@
 namespace light
 {
   PointLight::PointLight(float r, float g, float b, vec pos) :
-            AmbientLight(r, g, b), pos_(pos)
+            Light(r, g, b), pos_(pos)
   {}
 
   AmbientLight::vec
@@ -15,8 +15,15 @@ namespace light
   void
   PointLight::print() const
   {
-      std::cout << "point_light " << r_ << " " << g_ << " " << b_ << " ";
+      std::cout << "point_light ";
+      color_.print();
+      std::cout << std::endl;
       pos_.print();
       std::cout << std::endl;
+  }
+
+  std::string
+  PointLight::type_get(){
+      return "point";
   }
 }

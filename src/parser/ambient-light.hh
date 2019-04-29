@@ -1,10 +1,12 @@
 #pragma once
 
+#include "color.hh"
+#include "light.hh"
 #include "vector3.hh"
 
 namespace light
 {
-  class AmbientLight
+  class AmbientLight : public Light
   {
     public:
       using vec = vector::Vector3;
@@ -12,17 +14,12 @@ namespace light
       AmbientLight(float r, float g, float b);
 
       /* Methods */
-      virtual void print() const;
+      void print() const override;
 
       /* Getters */
-      float r_get() const;
-      float g_get() const;
-      float b_get() const;
+      RGB color_get() const override;
 
-    protected:
-      /* Attributes */
-      float r_;
-      float g_;
-      float b_;
+      virtual std::string type_get() override;
+
   };
 }
