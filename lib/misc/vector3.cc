@@ -87,6 +87,12 @@ namespace vector
       return Vector3(other.x_ - x_, other.y_ - y_, other.z_ - z_);
   }
 
+  float
+  Vector3::distance_get() const
+  {
+      return sqrt((x_ * x_) + (y_ * y_) + (z_ * z_));
+  }
+
   void
   Vector3::print() const
   {

@@ -14,8 +14,15 @@ Parser::parse()
         return false;
     }
     std::string line;
-    while (std::getline(file_in, line))
+    bool stay = false;
+    while (1)
     {
+        if (!stay)
+        {
+            if (!std::getline(file_in, line))
+                break;
+        }
+        stay = false;
         if (line.size() == 0)
             continue;
         auto list_word = sentence_to_list(line);
@@ -55,7 +62,7 @@ Parser::parse()
                    // FIXME: end of file | object
             }
             list_word = sentence_to_list(line);
-            while (list_word.size() != 0 || list_word.at(0) != "object")
+            while (list_word.size() != 0 && list_word.at(0) != "object")
             {
                 if (list_word.size() == 0)
                 {
@@ -95,14 +102,26 @@ Parser::parse()
                     auto vertex = Vertice(vec(std::stof(list_word.at(1)), std::stof(list_word.at(2)), std::stof(list_word.at(3))), true);
                     obj.add_vertice(vertex, true);
                 }
+
                 if (!(std::getline(file_in, line)))
                 {
                     objects_.push_back(obj);
                     break;
                 }
-                if (line.size() == 0)
-                    continue;
+                while (line.size() == 0)
+                {
+                    if (!(std::getline(file_in, line)))
+                    {
+                        objects_.push_back(obj);
+                        break;
+                    }
+                }
                 list_word = sentence_to_list(line);
+            }
+            if (list_word.at(0) == "object")
+            {
+                objects_.push_back(obj);
+                stay = true;
             }
         }
     }

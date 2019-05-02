@@ -37,3 +37,8 @@ RGB
 RGB::operator*(const RGB other) const {
     return RGB(r_ * other.r_, g_ * other.g_, b_ * other.b_);
 }
+
+RGB
+RGB::operator*(const float coeff) const {
+    return RGB(r_ * coeff, g_ * coeff, b_ * coeff);
+}

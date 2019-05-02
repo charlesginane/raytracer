@@ -19,6 +19,9 @@ class Triangle
         std::tuple<vec,vec> point_b_get() const;
         std::tuple<vec,vec> point_c_get() const;
 
+        /* Method */
+        void print() const;
+
     private:
         /* Attributes */
         std::tuple<vec,vec> point_a_;

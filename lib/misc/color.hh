@@ -23,6 +23,8 @@ class RGB
 
     RGB operator*(const RGB other) const;
 
+    RGB operator*(const float coeff) const;
+
   private:
     /* attributes */
     float r_;

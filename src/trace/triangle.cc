@@ -25,3 +25,14 @@ Triangle::point_c_get() const
 {
     return point_c_;
 }
+
+void
+Triangle::print() const
+{
+    std::get<0>(point_a_).print();
+    std::cout << std::endl << "\t     ";
+    std::get<0>(point_b_).print();
+    std::cout << std::endl << "\t     ";
+    std::get<0>(point_c_).print();
+    std::cout << std::endl;
+}

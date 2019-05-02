@@ -13,7 +13,7 @@ z_back(Camera cam)
     {
         for (auto j = -(cam.height_get()) / 2; j < (cam.height_get()) / 2; ++j)
         {
-            auto point = vector::Vector3(C.x_get() + i * u.x_get() + j * v.x_get(), C.y_get() + i * u.y_get() + j * v.y_get(),-1 * C.z_get() + i * u.z_get() + j * v.z_get() );
+            auto point = vector::Vector3(C.x_get() + i * u.x_get() + j * v.x_get(), C.y_get() + i * u.y_get() + j * v.y_get(),-1 * C.z_get() + i * u.z_get() + j * v.z_get());
             auto outgoing_vec = point.compute(cam.pos_get());
             ray_list.push_back(Ray(point, outgoing_vec));
         }

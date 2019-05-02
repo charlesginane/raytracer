@@ -40,6 +40,9 @@ class Vector3
       Vector3 normalize() const;
 
       Vector3 compute(const Vector3 other) const;
+
+      /// Return the distance of the vector.
+      float distance_get() const;
     private:
       /* Atributes */
       float x_;
